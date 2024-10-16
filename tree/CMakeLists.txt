@@ -78,7 +78,7 @@ if (NOT absl_FOUND)
   set (BUILD_TESTING OFF)
 
   # Include abseil-cpp.
-  set(ABSEIL_VER 20210324.2)
+  set(ABSEIL_VER 20220623.1)
   include(ExternalProject)
   set(ABSEIL_CMAKE_ARGS
       "-DCMAKE_INSTALL_PREFIX=${CMAKE_SOURCE_DIR}/abseil-cpp"
