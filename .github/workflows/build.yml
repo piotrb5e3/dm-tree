@@ -22,7 +22,7 @@ jobs:
           python setup.py sdist
         shell: bash
       - name: Directory listing
-        run: ls -lh dist/dm-tree*.tar.gz
+        run: ls -lh dist/dm_tree*.tar.gz
         shell: bash
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'release' && github.event.action == 'created') }}
