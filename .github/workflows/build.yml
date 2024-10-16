@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'release' && github.event.action == 'created') }}
         with:
-          name: dm-tree-${{ github.workflow }}-${{ github.run_number }}
+          name: dm-tree-sdist-${{ github.run_id }}
           path: dist/dm-tree*.tar.gz
 
   wheel-x86_64:
@@ -79,7 +79,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'release' && github.event.action == 'created') }}
         with:
-          name: dm-tree-${{ github.workflow }}-${{ github.run_number }}
+          name: dm-tree-${{ matrix.python_tag }}-${{ matrix.os_tag }}-${{ github.run_id }}
           path: wheelhouse/dm_tree*.whl
 
   wheel-apple_silicon:
@@ -122,7 +122,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'release' && github.event.action == 'created') }}
         with:
-          name: dm-tree-${{ github.workflow }}-${{ github.run_number }}
+          name: dm-tree-${{ matrix.python_tag }}-macosx_${{ matrix.macos_arch }}-${{ github.run_id }}
           path: wheelhouse/dm_tree*.whl
 
   wheel-aarch:
@@ -179,5 +179,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'release' && github.event.action == 'created') }}
         with:
-          name: dm-tree-${{ github.workflow }}-${{ github.run_number }}
+          name: dm-tree-${{ matrix.python_tag }}-${{ matrix.arch }}-${{ github.run_id }}
           path: wheelhouse/dm_tree*.whl
