@@ -64,11 +64,12 @@ jobs:
         env:
           CIBW_BUILD: ${{ matrix.python_tag }}-${{ matrix.os_tag }}
           CIBW_BUILD_VERBOSITY: 3
-          CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
+          CIBW_PROJECT_REQUIRES_PYTHON: ">=3.8"
           CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64
           CIBW_TEST_REQUIRES: pytest
           CIBW_BEFORE_TEST: pip install -r requirements-test.txt
           CIBW_TEST_COMMAND: pytest --pyargs tree
+          CIBW_ARCHS_MACOS: x86_64
         shell: bash
 
       - name: Directory listing
