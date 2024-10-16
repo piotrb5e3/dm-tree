@@ -103,7 +103,11 @@ class BuildCMakeExtension(build_ext.build_ext):
         osx_archs.append('x86_64')
       if '-arch arm64' in os.environ['ARCHFLAGS']:
         osx_archs.append('arm64')
+
+      print(f"ARCHFLAGS == {os.environ['ARCHFLAGS']}")
       cmake_args.append(f'-DCMAKE_OSX_ARCHITECTURES={";".join(osx_archs)}')
+
+    print(f"CMAKE ARGS:\n {' '.join(cmake_args)}")
     os.makedirs(self.build_temp, exist_ok=True)
     subprocess.check_call(
         ['cmake', ext.source_dir] + cmake_args, cwd=self.build_temp)
